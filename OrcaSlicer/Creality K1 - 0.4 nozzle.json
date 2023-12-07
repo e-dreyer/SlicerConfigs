@@ -1,23 +1,28 @@
 {
-    "auxiliary_fan": "0",
-    "bbl_calib_mark_logo": "1",
+    "auxiliary_fan": "1",
     "bed_custom_model": "",
     "bed_custom_texture": "",
     "bed_exclude_area": [
         "0x0"
     ],
-    "before_layer_change_gcode": ";BEFORE_LAYER_CHANGE\n;[layer_z]\nBEFORE_LAYER_CHANGE HEIGHT=[layer_z] LAYER=[layer_num]",
-    "change_filament_gcode": "COLOR_CHANGE",
+    "before_layer_change_gcode": ";BEFORE_LAYER_CHANGE\n;[layer_z]\nG92 E0",
+    "best_object_pos": "0.5,0.5",
+    "change_extrusion_role_gcode": "",
+    "change_filament_gcode": "PAUSE",
+    "cooling_tube_length": "5",
+    "cooling_tube_retraction": "91.5",
     "default_filament_profile": [
-        "My Generic ABS"
+        "My Generic PLA"
     ],
     "default_print_profile": "0.20mm Standard @MyKlipper",
     "deretraction_speed": [
-        "45"
+        "50"
     ],
-    "extruder_clearance_height_to_lid": "140",
-    "extruder_clearance_height_to_rod": "20",
-    "extruder_clearance_radius": "70",
+    "enable_filament_ramming": "1",
+    "extra_loading_move": "-2",
+    "extruder_clearance_height_to_lid": "101",
+    "extruder_clearance_height_to_rod": "45",
+    "extruder_clearance_radius": "45",
     "extruder_colour": [
         "#FCE94F"
     ],
@@ -29,69 +34,70 @@
     "fan_speedup_time": "0",
     "from": "",
     "gcode_flavor": "klipper",
+    "high_current_on_filament_swap": "0",
     "host_type": "octoprint",
     "inherits": "MyKlipper 0.4 nozzle",
-    "layer_change_gcode": ";AFTER_LAYER_CHANGE\n;[layer_z]\nAFTER_LAYER_CHANGE\n",
-    "machine_end_gcode": "PRINT_END\nSET_ENCLOSURE_TEMPERATURE TARGET=0.0\n; total layers count = [total_layer_count]",
+    "layer_change_gcode": "SET_PRINT_STATS_INFO CURRENT_LAYER={layer_num + 1}\n;AFTER_LAYER_CHANGE\n;[layer_z]",
+    "machine_end_gcode": "END_PRINT\n; total layers count = [total_layer_count]",
     "machine_load_filament_time": "0",
     "machine_max_acceleration_e": [
-        "500",
+        "5000",
         "5000"
     ],
     "machine_max_acceleration_extruding": [
-        "500",
-        "20000"
+        "20000",
+        "500"
     ],
     "machine_max_acceleration_retracting": [
-        "500",
-        "5000"
+        "1000",
+        "1000"
     ],
     "machine_max_acceleration_travel": [
-        "9000",
-        "9000"
+        "500",
+        "500"
     ],
     "machine_max_acceleration_x": [
-        "500",
-        "20000"
+        "20000",
+        "500"
     ],
     "machine_max_acceleration_y": [
-        "500",
-        "20000"
+        "20000",
+        "500"
     ],
     "machine_max_acceleration_z": [
-        "100",
-        "200"
+        "300",
+        "100"
     ],
     "machine_max_jerk_e": [
         "2.5",
-        "2.5"
+        "5"
     ],
     "machine_max_jerk_x": [
-        "5",
-        "9"
+        "9",
+        "8"
     ],
     "machine_max_jerk_y": [
-        "5",
-        "9"
+        "9",
+        "8"
     ],
     "machine_max_jerk_z": [
-        "5",
+        "2",
         "0.4"
     ],
     "machine_max_speed_e": [
-        "25",
+        "100",
         "25"
     ],
     "machine_max_speed_x": [
-        "110",
+        "800",
         "200"
     ],
     "machine_max_speed_y": [
-        "110",
+        "800",
         "200"
     ],
     "machine_max_speed_z": [
-        "10",
+        "50",
         "12"
     ],
     "machine_min_extruding_rate": [
@@ -103,32 +109,36 @@
         "0"
     ],
     "machine_pause_gcode": "PAUSE",
-    "machine_start_gcode": "PRINT_START EXTRUDER={first_layer_temperature[initial_tool]} BED=[first_layer_bed_temperature] MESH_MIN={first_layer_print_min[0]},{first_layer_print_min[1]} MESH_MAX={first_layer_print_max[0]},{first_layer_print_max[1]} LAYERS={total_layer_count} NOZZLE_SIZE={nozzle_diameter[0]}\n\nSET_PRINT_STATS_INFO TOTAL_LAYER=[total_layer_count]\n",
+    "machine_start_gcode": "SET_PRINT_STATS_INFO TOTAL_LAYER=[total_layer_count]\n\nM140 S0\nM104 S0\n\nSTART_PRINT EXTRUDER_TEMP=[nozzle_temperature_initial_layer] BED_TEMP=[bed_temperature_initial_layer_single]\n\nSET_PRESSURE_ADVANCE EXTRUDER=extruder SMOOTH_TIME=0.02",
     "machine_unload_filament_time": "0",
+    "manual_filament_change": "0",
     "max_layer_height": [
         "0.3"
     ],
     "min_layer_height": [
-        "0.1"
+        "0.08"
     ],
-    "name": "Creality CR-6 SE (0.4 mm nozzle)",
+    "name": "Creality K1 - 0.4 nozzle",
     "nozzle_diameter": [
         "0.4"
     ],
     "nozzle_hrc": "0",
-    "nozzle_type": "undefine",
+    "nozzle_type": "brass",
     "nozzle_volume": "0",
-    "print_host": "192.168.1.59",
-    "print_host_webui": "192.168.1.59",
+    "parking_pos_retraction": "92",
+    "print_host": "192.168.1.167:4409",
+    "print_host_webui": "192.168.1.167:4409",
     "printable_area": [
         "0x0",
-        "230x0",
-        "230x230",
-        "0x230"
+        "220x0",
+        "220x220",
+        "0x220"
     ],
     "printable_height": "250",
     "printer_model": "Generic Klipper Printer",
-    "printer_settings_id": "Creality CR-6 SE (0.4 mm nozzle)",
+    "printer_notes": "",
+    "printer_settings_id": "Creality K1 - 0.4 nozzle",
+    "printer_structure": "undefine",
     "printer_technology": "FFF",
     "printer_variant": "0.4",
     "printhost_apikey": "",
@@ -138,37 +148,53 @@
     "printhost_port": "",
     "printhost_ssl_ignore_revoke": "0",
     "printhost_user": "",
+    "purge_in_prime_tower": "1",
     "retract_before_wipe": [
         "70%"
     ],
     "retract_length_toolchange": [
-        "50"
+        "2"
+    ],
+    "retract_lift_above": [
+        "0"
+    ],
+    "retract_lift_below": [
+        "0"
+    ],
+    "retract_lift_enforce": [
+        "All Surfaces"
     ],
     "retract_restart_extra": [
         "0"
     ],
     "retract_restart_extra_toolchange": [
-        "5"
+        "0"
     ],
     "retract_when_changing_layer": [
         "1"
     ],
     "retraction_length": [
-        "4.5"
+        "0.5"
     ],
     "retraction_minimum_travel": [
         "1"
     ],
     "retraction_speed": [
-        "45"
+        "50"
     ],
     "scan_first_layer": "0",
     "silent_mode": "0",
     "single_extruder_multi_material": "1",
+    "support_air_filtration": "1",
+    "support_chamber_temp_control": "1",
     "template_custom_gcode": "",
     "thumbnails": [
-        "256x256"
+        "96x96",
+        "300x300"
     ],
+    "thumbnails_format": "PNG",
+    "time_cost": "25",
+    "time_lapse_gcode": "",
     "upward_compatible_machine": [],
     "use_firmware_retraction": "0",
     "use_relative_e_distances": "1",
@@ -177,12 +203,13 @@
         "1"
     ],
     "wipe_distance": [
-        "2"
+        "1"
     ],
     "z_hop": [
         "0.4"
     ],
     "z_hop_types": [
         "Normal Lift"
-    ]
+    ],
+    "z_offset": "0"
 }
